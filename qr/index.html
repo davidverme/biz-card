@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Verme - Scan to Connect</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .qr-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .qr-card img {
+            display: block;
+            width: 280px;
+            height: 280px;
+        }
+
+        .label {
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .name {
+            color: #f1f5f9;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="name">David Verme</div>
+        <div class="qr-card">
+            <div id="qr"></div>
+        </div>
+        <div class="label">Scan to view my business card</div>
+    </div>
+    <script>
+        var qr = qrcode(0, 'M');
+        qr.addData('https://david.herwin.tech');
+        qr.make();
+        document.getElementById('qr').innerHTML = qr.createSvgTag({ cellSize: 8, margin: 0 });
+    </script>
+</body>
+</html>
